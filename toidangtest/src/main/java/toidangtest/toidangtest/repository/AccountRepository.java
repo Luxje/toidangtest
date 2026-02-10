@@ -1,11 +1,9 @@
 package toidangtest.toidangtest.repository;
 
-import org.hibernate.Session;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import toidangtest.toidangtest.entity.Account;
 
-public class AccountRepository {
-    Session session = null;
-
-//    public AccountRepository {
-//        session =
-//    }
+@Repository
+public interface AccountRepository extends CrudRepository<Account, Integer> {
 }
