@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import toidangtest.toidangtest.entity.HocSinh;
+import toidangtest.toidangtest.entity.LopHoc;
 
 import java.util.Properties;
 
@@ -24,7 +25,7 @@ public class HibernateConfig {
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.addAnnotatedClass(HocSinh.class);
-//        conf.addAnnotatedClass(HocSinh.class);
+        conf.addAnnotatedClass(LopHoc.class);
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

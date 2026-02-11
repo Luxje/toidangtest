@@ -5,6 +5,6 @@ import toidangtest.toidangtest.entity.HocSinh;
 
 public interface HocSinhRepository extends CrudRepository<HocSinh, Integer> {
 
-    public HocSinh findHocSinhByHoTen(String email);
+    public HocSinh findHocSinhByHoTen(String hoTen);
 
 }

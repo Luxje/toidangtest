@@ -5,12 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import toidangtest.toidangtest.entity.HocSinh;
+import toidangtest.toidangtest.entity.LopHoc;
 import toidangtest.toidangtest.login_credentials.HocSinhLogin;
+import toidangtest.toidangtest.repository.LopHocRepository;
 import toidangtest.toidangtest.service.HocSinhService;
+
+import java.util.List;
 
 
 @Controller
 public class HocSinhController {
+
+    @Autowired
+    private LopHocRepository lopHocRepository;
 
     @Autowired
     private HocSinhService hocSinhService;
@@ -29,10 +37,14 @@ public class HocSinhController {
         }
     }
 
-//    @GetMapping("/admin/services")
-//    public String informationView(Model model){
-//
-//    }
+    @GetMapping("/admin/services")
+    public String returnBack(Model model){
+        List<HocSinh> hocSinhList = this.hocSinhService.getAll();
+        List<LopHoc> lopHocList = (List<LopHoc>) this.lopHocRepository.findAll();
+        model.addAttribute("hocSinh", hocSinhList);
+        model.addAttribute("lopHoc", lopHocList);
+        return "HocSinh-page";
+    }
 
 
 }
