@@ -16,13 +16,13 @@ public class HocSinhController {
     private HocSinhService hocSinhService;
 
     private String message = "check message";
-
     @GetMapping("/AdminLogin")
     public String getAllData(@ModelAttribute("adminLogin") HocSinhLogin login, Model model)
     {
         String hoTen = login.getHoTen();
-        if(hocSinhService.(email, password) == true){
-            return "redirect:/admin/service";
+        Integer idHocSinh = login.getIdHocSinh();
+        if(hocSinhService.LoginCheck(hoTen, idHocSinh) == true){
+            return "redirect:/Student/service";
         }else{
             model.addAttribute("error", "Invalid username or password");
             return "Login";
