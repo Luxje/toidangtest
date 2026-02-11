@@ -5,7 +5,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import toidangtest.toidangtest.entity.Account;
+import toidangtest.toidangtest.entity.HocSinh;
 
 import java.util.Properties;
 
@@ -16,14 +16,15 @@ public class HibernateConfig {
         Configuration conf = new Configuration();
 
         Properties properties = new Properties();
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServer2016Dialect");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=toidangtest;encrypt=true;trustServerCertificate=true;");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=SD20309JAV201;encrypt=true;trustServerCertificate=true;");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "12345678");
         properties.put(Environment.SHOW_SQL, "true");
 
-        conf.addAnnotatedClass(Account.class);
+        conf.addAnnotatedClass(HocSinh.class);
+//        conf.addAnnotatedClass(HocSinh.class);
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
