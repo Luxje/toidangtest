@@ -20,9 +20,8 @@ public class HocSinhController {
     @GetMapping("/AdminLogin")
     public String getAllData(@ModelAttribute("adminLogin") HocSinhLogin login, Model model)
     {
-        String email = login.getEmail();
-        String password = login.getPassword();
-        if(hocSinhService.validateAdminCredentials(email, password) == true){
+        String hoTen = login.getHoTen();
+        if(hocSinhService.(email, password) == true){
             return "redirect:/admin/service";
         }else{
             model.addAttribute("error", "Invalid username or password");
