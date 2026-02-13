@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import toidangtest.toidangtest.entity.HocSinh;
 import toidangtest.toidangtest.entity.LopHoc;
 import toidangtest.toidangtest.login_credentials.HocSinhLogin;
@@ -15,6 +17,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/hocSinh")
 public class HocSinhController {
 
     @Autowired
@@ -24,7 +27,7 @@ public class HocSinhController {
     private HocSinhService hocSinhService;
 
     private String message = "check message";
-    @GetMapping("/AdminLogin")
+    @GetMapping("/Login")
     public String getAllData(@ModelAttribute("adminLogin") HocSinhLogin login, Model model)
     {
         String hoTen = login.getHoTen();
@@ -37,14 +40,19 @@ public class HocSinhController {
         }
     }
 
-    @GetMapping("/admin/services")
+    @GetMapping("/service")
     public String returnBack(Model model){
         List<HocSinh> hocSinhList = this.hocSinhService.getAll();
         List<LopHoc> lopHocList = (List<LopHoc>) this.lopHocRepository.findAll();
         model.addAttribute("hocSinh", hocSinhList);
         model.addAttribute("lopHoc", lopHocList);
-        return "HocSinh-page";
+        return "data-hocSinh";
     }
 
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        return "Controller is working!";
+    }
 
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<table class="table" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Họ tên</th>
+        <th>Giới tính</th>
+        <th>Địa chỉ</th>
+        <th>Lớp học</th>
+        <th>Khối</th>
+    </tr>
+    <tr th:each="hocSinh :${hocSinh}">
+    <td th:text="${hocSinh.id}"></td>
+    <td th:text="${hocSinh.hoTen}"></td>
+    <td th:text="${hocSinh.gioiTinh}"></td>
+    <td th:text="${hocSinh.diaChi}"></td>
+    <td th:text="${hocSinh.lopHoc.tenLop}"></td>
+    <td th:text="${hocSinh.lopHoc.khoi}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
