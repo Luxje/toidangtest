@@ -3,9 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin page</title>
+    <title>Student List</title>
 </head>
 <body>
+<a href="/hocSinh/addStudent"><button>Them Hoc Sinh</button></a>
+
 <table class="table" border="1">
     <tr>
         <th>Id</th>
@@ -22,6 +24,7 @@
     <td th:text="${hocSinh.diaChi}"></td>
     <td th:text="${hocSinh.lopHoc.tenLop}"></td>
     <td th:text="${hocSinh.lopHoc.khoi}"></td>
+<!--    <td><a href=""></a></td>-->
     </tr>
 </table>
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add student page</title>
+</head>
+<body>
+<form action="addingStudent" method="post">
+    Tên học sinh:
+    <input type="text" name="hoTen"><br>
+    Giới tính:
+    <input type="radio" value="true" name="gioiTinh">Nam
+    <input type="radio" value="false" name="gioiTinh">Nữ <br>
+    Địa chỉ:
+    <input type="text" name="diaChi"><br>
+    Tên lớp:
+    <select name="idLop">
+        <option th:each="lop : ${lopHoc}"
+                th:value="${lop.id}"
+                th:text="${lop.tenLop}">
+        </option>
+    </select>
+        <button type="submit">Add</button>
+</form>
+</body>
+</html>

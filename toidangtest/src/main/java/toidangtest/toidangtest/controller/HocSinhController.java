@@ -3,10 +3,7 @@ package toidangtest.toidangtest.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import toidangtest.toidangtest.entity.HocSinh;
 import toidangtest.toidangtest.entity.LopHoc;
 import toidangtest.toidangtest.login_credentials.HocSinhLogin;
@@ -49,10 +46,20 @@ public class HocSinhController {
         return "data-hocSinh";
     }
 
-    @GetMapping("/test")
-    @ResponseBody
-    public String test() {
-        return "Controller is working!";
+    @GetMapping("deleteStudent/{id}")
+    public String deleteStudent(@PathVariable("id") int id){
+        this.hocSinhService.delete(id);
+        return "redirect:/Student/service";
     }
 
+    @GetMapping("/addStudent")
+    public String addStudentPage(){
+        return "Add_Student";
+    }
+
+    @PostMapping("addingStudent")
+    public String addStudent( @ModelAttribute HocSinh hocSinh){
+        this.hocSinhService.add(hocSinh);
+        return "redirect:/Student/service";
+    }
 }
